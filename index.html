@@ -552,6 +552,31 @@
     const music = document.getElementById("bgMusic");
     const musicLabel = document.getElementById("musicLabel");
 
+    /*
+      GOOGLE FORM SETUP
+      Replace these placeholder values with your real Google Form details.
+
+      Create a Google Form with these questions:
+      1. Family / Guest Name
+      2. Attendance
+      3. Number of persons attending
+      4. Vegetarian count
+      5. Non vegetarian count
+      6. Any allergies
+      7. Message for the parents-to-be
+    */
+    const GOOGLE_FORM_ACTION_URL = "PASTE_YOUR_GOOGLE_FORM_FORMRESPONSE_URL_HERE";
+
+    const GOOGLE_FORM_ENTRIES = {
+      familyName: "entry.PASTE_FAMILY_NAME_ID",
+      attendance: "entry.PASTE_ATTENDANCE_ID",
+      personCount: "entry.PASTE_PERSON_COUNT_ID",
+      vegCount: "entry.PASTE_VEG_COUNT_ID",
+      nonVegCount: "entry.PASTE_NON_VEG_COUNT_ID",
+      allergies: "entry.PASTE_ALLERGIES_ID",
+      message: "entry.PASTE_MESSAGE_ID"
+    };
+
     function startMusic() {
       try {
         music.volume = 0.45;
@@ -698,8 +723,50 @@
       body += "Time: 11:00 AM - 2:00 PM\n";
       body += "Venue: Boleyn Room, Springfield Parish Council, Chelmsford";
 
-      const subject = encodeURIComponent("Gender Reveal RSVP - " + familyName);
-      window.location.href = "mailto:barathnivash95@gmail.com?subject=" + subject + "&body=" + encodeURIComponent(body);
+      if (!GOOGLE_FORM_ACTION_URL || GOOGLE_FORM_ACTION_URL.includes("PASTE_YOUR_GOOGLE_FORM")) {
+        alert("Google Form is not connected yet. Please add the Google Form action URL and entry IDs in index.html.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append(GOOGLE_FORM_ENTRIES.familyName, familyName);
+      formData.append(GOOGLE_FORM_ENTRIES.attendance, attendance === "attending" ? "Attending" : "Not attending");
+
+      if (attendance === "attending") {
+        const count = document.getElementById("count").value || "";
+        const veg = document.getElementById("vegCount").value || "";
+        const nonVeg = document.getElementById("nonVegCount").value || "";
+
+        formData.append(GOOGLE_FORM_ENTRIES.personCount, count);
+        formData.append(GOOGLE_FORM_ENTRIES.vegCount, veg);
+        formData.append(GOOGLE_FORM_ENTRIES.nonVegCount, nonVeg);
+        formData.append(GOOGLE_FORM_ENTRIES.allergies, allergies);
+      } else {
+        formData.append(GOOGLE_FORM_ENTRIES.personCount, "");
+        formData.append(GOOGLE_FORM_ENTRIES.vegCount, "");
+        formData.append(GOOGLE_FORM_ENTRIES.nonVegCount, "");
+        formData.append(GOOGLE_FORM_ENTRIES.allergies, "");
+      }
+
+      formData.append(GOOGLE_FORM_ENTRIES.message, message);
+
+      fetch(GOOGLE_FORM_ACTION_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      })
+      .then(() => {
+        document.getElementById("rsvpForm").reset();
+        document.getElementById("attendingFields").classList.add("hidden");
+        document.getElementById("foodFields").classList.add("hidden");
+        document.getElementById("allergyField").classList.add("hidden");
+        document.getElementById("messageField").classList.add("hidden");
+        clearPreferenceMessages();
+        alert("Thank you! Your RSVP has been submitted.");
+      })
+      .catch(() => {
+        alert("Something went wrong while submitting. Please try again.");
+      });
     }
   </script>
 </body>
