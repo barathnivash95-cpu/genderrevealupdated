@@ -36,3 +36,19 @@ Upload these extracted files to your GitHub repository root:
 - Moved "He or She? Come & See!" upward to the blank top area.
 - Shifted the background couple image downward so the title does not hide the face.
 - Kept the Google Form connection and latest wording.
+
+
+## Title position update
+- Moved He or She / Come & See down to the red-marked blank area.
+
+
+## Cloud position update
+- Moved kutti and kuttan slightly downward.
+
+## Text line update
+- Kept "Come & See!" on the same line, especially on mobile.
+
+
+## Time and button update
+- Time changed to 10:30 AM – 1:30 PM.
+- Tap button changed from Tap to Open to Tap to Scroll.
