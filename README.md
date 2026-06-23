@@ -52,3 +52,31 @@ Upload these extracted files to your GitHub repository root:
 ## Time and button update
 - Time changed to 10:30 AM – 1:30 PM.
 - Tap button changed from Tap to Open to Tap to Scroll.
+
+## Not attending Google Form fix
+
+For Not attending responses, the form now sends:
+- Number attending: 0
+- Vegetarian count: 0
+- Non vegetarian count: 0
+- Allergies: N/A
+- Message: guest message, or N/A if blank
+
+This helps Google Forms store the response even if some form questions are marked required.
+
+## Reliable Not Attending fix
+
+This version uses a real hidden form POST to Google Forms instead of fetch/no-cors.
+
+For Not attending, it submits:
+- Attendance: Not attending
+- Number attending: 0
+- Vegetarian count: 0
+- Non vegetarian count: 0
+- Allergies: N/A
+- Message: entered message or N/A
+
+Important:
+In Google Forms, make sure Attendance option text is exactly:
+- Attending
+- Not attending
