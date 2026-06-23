@@ -80,3 +80,11 @@ Important:
 In Google Forms, make sure Attendance option text is exactly:
 - Attending
 - Not attending
+
+
+## Calendar reminder update
+
+- Added `assets/gender-reveal.ics`.
+- The event time is now clickable.
+- Guests can tap the time to add the event to their calendar.
+- Calendar file includes reminders 1 day before and 1 hour before.

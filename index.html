@@ -294,7 +294,16 @@
       font-weight: 700;
     }
     .value { font-size: 1.06rem; line-height: 1.45; font-weight: 600; }
-    .map-link { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(197,154,81,.7); }
+    .map-link, .calendar-link { color: var(--text); text-decoration: none; border-bottom: 1px solid rgba(197,154,81,.7); }
+    .calendar-note {
+      display: block;
+      margin-top: 6px;
+      font-family: Arial, sans-serif;
+      font-size: .84rem;
+      font-weight: 600;
+      color: #7a6177;
+      line-height: 1.35;
+    }
 
     .parking-note {
       margin: 8px auto 8px;
@@ -495,7 +504,12 @@
           </div>
           <div class="detail-box">
             <span class="label">Time</span>
-            <div class="value">10:30 AM – 1:30 PM</div>
+            <div class="value">
+              <a class="calendar-link" href="assets/gender-reveal.ics">
+                10:30 AM – 1:30 PM
+              </a>
+              <span class="calendar-note">Tap the time to add this event to your calendar and set a reminder.</span>
+            </div>
           </div>
           <div class="detail-box">
             <span class="label">Venue</span>

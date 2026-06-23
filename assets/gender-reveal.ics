@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Brijitha and Barath//Gender Reveal Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:gender-reveal-brijitha-barath-20260712@barathnivash95.github.io
+DTSTAMP:20260623T000000Z
+DTSTART:20260712T093000Z
+DTEND:20260712T123000Z
+SUMMARY:Gender Reveal Celebration
+LOCATION:Boleyn Room, Springfield Parish Council, Chelmsford
+DESCRIPTION:Gender Reveal Celebration for Brijitha and Barath. Venue: Boleyn Room, Springfield Parish Council, Chelmsford.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Gender Reveal Celebration
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Gender Reveal Celebration starts soon
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
